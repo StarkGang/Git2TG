@@ -1,0 +1,30 @@
+{
+  "name": "GitAlertBot - Pyrogram",
+  "description": "An Git Alert Bot in Pyrogram.",
+  "keywords": [
+    "productivity",
+    "python",
+    "github"
+  ],
+  "repository": "https://github.com/DevsExpo/GitAlertBot",
+  "logo": "https://telegra.ph//file/5b8af3f478367355593cf.jpg",
+  "env": {
+    "BOT_TOKEN": {
+      "description": "Your Bot Token. From @BotFather.",
+      "value": ""
+    },
+    "API_HASH": {
+      "description": "Your APi Hash From Telegram",
+      "value": ""
+    },
+    "API_ID": {
+      "description": "Your Api ID From Telegram.",
+      "value": "5"
+    }
+  },
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ]
+}

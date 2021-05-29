@@ -1,0 +1,7 @@
+quart
+aiohttp
+tgcrypto
+python-dotenv
+hypercorn
+pyrogram
+apscheduler
