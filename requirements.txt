@@ -1,0 +1,6 @@
+quart
+aiohttp
+python-dotenv
+hypercorn
+telethon
+apscheduler
