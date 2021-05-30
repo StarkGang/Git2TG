@@ -9,6 +9,7 @@ import logging
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from html import escape
 import time
+import aiohttp
 from sys import getsizeof
 from quart import jsonify, request
 import hypercorn.asyncio
