@@ -236,7 +236,7 @@ Total forks count is now: __{data['repository']['forks_count']} ⚡️__
     return "tf"
 
 
-@gitbot.on(events.NewMessage(pattern="^(!|/)(start|help)"))
+@gitbot.on(events.NewMessage(pattern="^(!|/)(start|help)$"))
 async def bot_(message):
     key_board = [[Button.url("Source Code", "https://github.com/DevsExpo/GitAlertBot")]]
     file = "https://i.makeagif.com/media/2-18-2016/M3yKm-.gif"
@@ -247,8 +247,8 @@ async def bot_(message):
   
 
 if config.HEROKU_APP_NAME:
-    scheduler = AsyncIOScheduler(timezone="Asia/Kolkata")
-    scheduler.add_job(ping_app, 'interval', minutes=15)
+    scheduler = AsyncIOScheduler()
+    scheduler.add_job(ping_app, 'interval', minutes=config.PING_TIME)
     scheduler.start()
 
 async def run():
