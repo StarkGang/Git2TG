@@ -118,7 +118,6 @@ async def ghoo_k(chat):
 [#{data['issue']['number']}]({data['comment']['html_url']})
 """
             await msg_.edit(issue_comment)
-            return "ok"
         else:
             issue_c = f"""
 **⚠️ New {data['action']} Issue :** `{data['repository']['name']}` 
@@ -126,7 +125,7 @@ Title : {data['issue']['title']}
 {data['issue']['body'] or "No Description"}
 [{data['issue']['number']}]({data['issue']['html_url']})"""
             await msg_.edit(issue_c)
-            return "ok"
+        return "ok"
     if data.get("forkee"):
         fork_ = f"""
 🍴 {data['forkee']['svn_url']} Forked {data['repository']['html_url']}
@@ -153,9 +152,7 @@ Total forks count is now: __{data['repository']['forks_count']} ⚡️__
     if data.get("pages"):
         text = f"<a href='{data['repository']['html_url']}'>{data['repository']['name']}</a> wiki pages were updated by <a href='{data['sender']['html_url']}'>{data['sender']['login']}</a>!\n\n"
         for x in data["pages"]:
-            summary = ""
-            if x["summary"]:
-                summary = f"{x['summary']}\n"
+            summary = f"{x['summary']}\n" if x["summary"] else ""
             text += f"📝 <b>{escape(x['title'])}</b> ({x['action']})\n{summary}<a href='{x['html_url']}'>{x['page_name']}</a> - {x['sha'][:7]}"
             if len(data["pages"]) >= 2:
                 text += "\n=====================\n"
@@ -164,8 +161,7 @@ Total forks count is now: __{data['repository']['forks_count']} ⚡️__
     if data.get("commits"):
         commits_text = ""
         rng = len(data["commits"])
-        if rng > 10:
-            rng = 10
+        rng = min(rng, 10)
         for x in range(rng):
             commit = data["commits"][x]
             if len(escape(commit["message"])) > 300:
