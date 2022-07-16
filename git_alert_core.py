@@ -54,7 +54,7 @@ gitbot = TelegramClient(
     )
 
 async def ping_app():
-    app_url = "https://{}.herokuapp.com/".format(config.HEROKU_APP_NAME)
+    app_url = f"https://{config.HEROKU_APP_NAME}.herokuapp.com/"
     async with aiohttp.ClientSession() as session:
         async with session.get(app_url) as response:
             return response.status
@@ -64,7 +64,7 @@ async def ping_app():
 
 @gitalertapi.route("/", methods=["GET", "POST"])
 async def root():
-    bot_ = "@" + str(gitbot.me.username)
+    bot_ = f"@{str(gitbot.me.username)}"
     response = {
         "server_alive": True,
         "bot": bot_,
