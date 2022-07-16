@@ -43,7 +43,7 @@ if not config.API_ID:
     quit(1)
     
 if not config.API_HASH:
-    logging.error("Who Will Give Me API_ID? Telegram Will Kill me.")
+    logging.error("Who Will Give Me API_HASH? Telegram Will Kill me.")
     quit(1)
    
     
